@@ -1,0 +1,149 @@
+"use client";
+
+import React from 'react';
+import { ChevronRight, Users, FileText, Image, Calendar, Flag, Settings, PlusCircle,LucideIcon , List } from "lucide-react";
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+import {
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+} from "@/components/ui/sidebar"
+
+interface MenuItem {
+  title: string;
+  url: string;
+  icon?: LucideIcon ;
+  isActive?: boolean;
+  items?: SubMenuItem[];
+}
+
+interface SubMenuItem {
+  title: string;
+  url: string;
+}
+
+const NavMain = () => {
+  const menuItems: MenuItem[] = [
+    {
+      title: "Models",
+      icon: Users,
+      items: [
+        { title: "Create", url: "/admin/models/create" },
+        { title: "List", url: "/admin/models" },
+      ],
+    },
+    {
+      title: "Profiles",
+      icon: Users,
+      url: "/admin/profiles"
+    },
+    {
+      title: "Events",
+      icon: Calendar,
+      items: [
+        { title: "Create", url: "/admin/events/create" },
+        { title: "List", url: "/admin/events" },
+      ],
+    },
+    {
+      title: "Event Registrations",
+      icon: Calendar,
+      url: "/admin/event_registrations"
+    },
+    {
+      title: "Pageant Experiences",
+      icon: Users,
+      url: "/admin/pageant_experiences"
+    },
+    {
+      title: "Gallery",
+      icon: Image,
+      url: "/admin/gallery"
+    },
+    {
+      title: "Visits",
+      icon: Calendar,
+      items: [
+        { title: "Registered Visits", url: "/admin/visits" },
+        { title: "Models who attended visits", url: "/admin/visit_models" },
+      ]
+    },
+    {
+      title: "News",
+      icon: FileText,
+      items: [
+        { title: "Create", url: "/admin/news/create" },
+        { title: "List", url: "/admin/news" },
+      ],
+    },
+    {
+      title: "Sponsors",
+      icon: Users,
+      url: "/admin/sponsors"
+    },
+    {
+      title: "Countries",
+      icon: Flag,
+      url: "/admin/countries"
+    },
+    {
+      title: "Admins",
+      icon: Settings,
+      url: "/admin/admins"
+    },
+  ];
+
+  return (
+      <SidebarGroup>
+        <SidebarGroupLabel>Platform</SidebarGroupLabel>
+        <SidebarMenu>
+          {menuItems.map((item) => (
+              <Collapsible
+                  key={item.title}
+                  asChild
+                  className="group/collapsible"
+              >
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton tooltip={item.title}>
+                      {item.icon && <item.icon />}
+                      <span>{item.title}</span>
+                      {item.items && (
+                          <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                      )}
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  {item.items && (
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {item.items.map((subItem) => (
+                              <SidebarMenuSubItem key={subItem.title}>
+                                <SidebarMenuSubButton asChild>
+                                  <a href={subItem.url}>
+                                    <span>{subItem.title}</span>
+                                  </a>
+                                </SidebarMenuSubButton>
+                              </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                  )}
+                </SidebarMenuItem>
+              </Collapsible>
+          ))}
+        </SidebarMenu>
+      </SidebarGroup>
+  );
+};
+
+export default NavMain;
