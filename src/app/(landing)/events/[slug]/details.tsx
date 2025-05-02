@@ -74,7 +74,7 @@ const ClientEventDetails = async ({ event }: { event: EventsType }) => {
               >
                 {isUpcoming ? "Click to Register" : "Event Ended"}
               </SheetTrigger>
-              <SheetContent>
+              <SheetContent className={"w-11/12 max-w-sm"}>
                 <SheetHeader>
                   <SheetTitle>{event.title} Registration form</SheetTitle>
                   <SheetDescription>

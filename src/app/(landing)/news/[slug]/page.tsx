@@ -2,6 +2,7 @@ import React from "react";
 import { getNewsBySlug } from "@/actions/newsAction";
 import EditorClient from "@/components/editor-client";
 import type { Metadata, ResolvingMetadata } from "next";
+import Image from "next/image";
 
 type Props = {
   params: { slug: string };
@@ -46,21 +47,31 @@ export default async function Page({ params }: Props) {
     return <div>Article not found</div>; // Basic error handling
   }
   return (
-    <div>
-      <h1>{article.title}</h1>
-      <p>
-        <strong>ID:</strong> {article.id}
-      </p>
-      <EditorClient editable={false} value={JSON.parse(article.content)} />
-      <p>
-        <strong>Caption:</strong> {article.caption}
-      </p>
-      <p>
-        <strong>Slug:</strong> {article.slug}
-      </p>
-      <p>
-        <strong>Featured Image URL:</strong> {article.featuredImageUrl}
-      </p>
+    <div
+      className={
+        "flex p-5 items-center w-full max-w-5xl mx-auto justify-center flex-col gap-3"
+      }
+    >
+      <h1
+        className={
+          "font-heading1 text-3xl text-center tracking-wider font-semibold"
+        }
+      >
+        {article.title}
+      </h1>
+      <p className={"text-center"}>{article.caption}</p>
+
+      <Image
+        width={1000}
+        height={1000}
+        className={"object-cover w-full h-[400px] rounded-xl"}
+        src={article.featuredImageUrl}
+        alt={`featured image for the blog by the title ${article.title}`}
+      />
+
+      <div className="">
+        <EditorClient editable={false} value={JSON.parse(article.content)} />
+      </div>
     </div>
   );
 }

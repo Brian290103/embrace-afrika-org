@@ -41,7 +41,12 @@ export const Editor = ({ value, onChange, editable = true }: EditorProps) => {
     <div
       className={`w-full prose-sm ${editable && "border p-5"} rounded-xl ${editable && "min-h-screen"}`}
     >
-      <BlockNoteView editable={editable} editor={editor} theme={"light"} />
+      <BlockNoteView
+        editable={editable}
+        editor={editor}
+        theme={"light"}
+        className={"font-black"}
+      />
     </div>
   );
 };

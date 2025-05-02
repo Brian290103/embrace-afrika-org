@@ -111,8 +111,8 @@ const EventRegistrationForm = ({ eventId }: { eventId: string }) => {
   ];
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white py-8 rounded-lg shadow-md w-full ">
+    <div className="flex items-center justify-center h-full bg-gray-100">
+      <div className="bg-white p-3 rounded-lg shadow-md w-full ">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {fields.map((fieldName) => {
