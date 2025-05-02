@@ -10,6 +10,17 @@ import {
 } from "@/components/ui/card";
 import { getAllGalleryItems } from "@/actions/galleryAction";
 import { GalleryDataTable } from "@/app/admin/gallery/data-table";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { CirclePlus } from "lucide-react";
+import GalleryForm from "@/app/admin/visits/gallery-form";
 
 const GalleryPage = async () => {
   const data: GalleryType[] = await getAllGalleryItems(); // Fetch gallery data
@@ -22,6 +33,26 @@ const GalleryPage = async () => {
           <CardDescription>View and manage gallery items.</CardDescription>
         </CardHeader>
         <CardContent>
+          <div className={"pb-5"}>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button>
+                  <CirclePlus />
+                  Upload Image
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Add New Image</DialogTitle>
+                  <DialogDescription>
+                    Upload a new image to the gallery.
+                  </DialogDescription>
+                </DialogHeader>
+                <GalleryForm type={"image"} />
+              </DialogContent>
+            </Dialog>
+          </div>
+
           <GalleryDataTable data={data} />
         </CardContent>
         <CardFooter className="justify-between">

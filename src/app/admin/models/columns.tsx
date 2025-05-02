@@ -62,7 +62,7 @@ export const modelsColumns: ColumnDef<ModelsType>[] = [
       <div className="max-w-[300px] flex w-full">
         <a
           target={"_blank"}
-          href={`/admin/models/${row.original.slug}`} // Updated link
+          href={`/models/${row.original.slug}`} // Updated link
           className="font-medium w-full truncate flex block"
         >
           {row.getValue("name")}
