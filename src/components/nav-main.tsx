@@ -1,13 +1,21 @@
 "use client";
 
-import React from 'react';
-import { ChevronRight, Users, FileText, Image, Calendar, Flag, Settings, PlusCircle,LucideIcon , List } from "lucide-react";
-
+import React from "react";
+import {
+  Calendar,
+  ChevronRight,
+  FileText,
+  Flag,
+  Image,
+  LucideIcon,
+  Settings,
+  Users,
+} from "lucide-react";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -17,13 +25,12 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 interface MenuItem {
   title: string;
   url: string;
-  icon?: LucideIcon ;
-  isActive?: boolean;
+  icon?: LucideIcon;
   items?: SubMenuItem[];
 }
 
@@ -41,11 +48,12 @@ const NavMain = () => {
         { title: "Create", url: "/admin/models/create" },
         { title: "List", url: "/admin/models" },
       ],
+      url: "/admin/models",
     },
     {
       title: "Profiles",
       icon: Users,
-      url: "/admin/profiles"
+      url: "/admin/profiles",
     },
     {
       title: "Events",
@@ -54,29 +62,26 @@ const NavMain = () => {
         { title: "Create", url: "/admin/events/create" },
         { title: "List", url: "/admin/events" },
       ],
+      url: "/admin/events",
     },
     {
       title: "Event Registrations",
       icon: Calendar,
-      url: "/admin/event_registrations"
-    },
-    {
-      title: "Pageant Experiences",
-      icon: Users,
-      url: "/admin/pageant_experiences"
+      url: "/admin/event_registrations",
     },
     {
       title: "Gallery",
       icon: Image,
-      url: "/admin/gallery"
+      url: "/admin/gallery",
     },
     {
       title: "Visits",
       icon: Calendar,
       items: [
-        { title: "Registered Visits", url: "/admin/visits" },
-        { title: "Models who attended visits", url: "/admin/visit_models" },
-      ]
+        { title: "Create", url: "/admin/visits/create" },
+        { title: "List", url: "/admin/visits" },
+      ],
+      url: "/admin/visits",
     },
     {
       title: "News",
@@ -85,64 +90,83 @@ const NavMain = () => {
         { title: "Create", url: "/admin/news/create" },
         { title: "List", url: "/admin/news" },
       ],
+      url: "/admin/news",
+    },
+    {
+      title: "Testimonies",
+      icon: Users,
+      url: "/admin/testimonies",
     },
     {
       title: "Sponsors",
       icon: Users,
-      url: "/admin/sponsors"
+      url: "/admin/sponsors",
     },
     {
       title: "Countries",
       icon: Flag,
-      url: "/admin/countries"
+      url: "/admin/countries",
     },
     {
       title: "Admins",
       icon: Settings,
-      url: "/admin/admins"
+      url: "/admin/admins",
     },
   ];
 
   return (
-      <SidebarGroup>
-        <SidebarGroupLabel>Platform</SidebarGroupLabel>
-        <SidebarMenu>
-          {menuItems.map((item) => (
+    <SidebarGroup>
+      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarMenu>
+        {menuItems.map((item) => {
+          const hasSubmenu = item.items && item.items.length > 0;
+
+          if (hasSubmenu) {
+            return (
               <Collapsible
-                  key={item.title}
-                  asChild
-                  className="group/collapsible"
+                key={item.title}
+                asChild
+                className="group/collapsible"
               >
                 <SidebarMenuItem>
                   <CollapsibleTrigger asChild>
                     <SidebarMenuButton tooltip={item.title}>
                       {item.icon && <item.icon />}
                       <span>{item.title}</span>
-                      {item.items && (
-                          <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-                      )}
+                      <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                     </SidebarMenuButton>
                   </CollapsibleTrigger>
-                  {item.items && (
-                      <CollapsibleContent>
-                        <SidebarMenuSub>
-                          {item.items.map((subItem) => (
-                              <SidebarMenuSubItem key={subItem.title}>
-                                <SidebarMenuSubButton asChild>
-                                  <a href={subItem.url}>
-                                    <span>{subItem.title}</span>
-                                  </a>
-                                </SidebarMenuSubButton>
-                              </SidebarMenuSubItem>
-                          ))}
-                        </SidebarMenuSub>
-                      </CollapsibleContent>
-                  )}
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      {item.items.map((subItem) => (
+                        <SidebarMenuSubItem key={subItem.title}>
+                          <SidebarMenuSubButton asChild>
+                            <a href={subItem.url}>
+                              <span>{subItem.title}</span>
+                            </a>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
                 </SidebarMenuItem>
               </Collapsible>
-          ))}
-        </SidebarMenu>
-      </SidebarGroup>
+            );
+          } else {
+            return (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton tooltip={item.title} asChild>
+                  <a href={item.url}>
+                    {item.icon && <item.icon />}
+                    <span>{item.title}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            );
+          }
+        })}
+      </SidebarMenu>
+    </SidebarGroup>
   );
 };
 

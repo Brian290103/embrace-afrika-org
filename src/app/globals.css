@@ -4,6 +4,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-heading1: "SaolDisplay-Regular", sans-serif;
+  --font-heading2: "Syne", sans-serif;
+  --font-heading3: "Italiana", sans-serif;
+  --font-body: "Lato", sans-serif;
+  --font-fun: "Tangerine", sans-serif;
+  --font-numeric: "Sirin Stencil", sans-serif;
+  --color-brand-primary: oklch(0.81 0.1572 89.13);
+
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -117,6 +126,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
   }
 }
