@@ -67,6 +67,24 @@ export interface EventsType {
   eventLocation: string;
   createdAt: string;
 }
+export interface EventRegistrationType {
+  id: string;
+  eventId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  dateOfBirth?: string;
+  heightCm?: string;
+  country: string;
+  city: string;
+  address: string;
+  instagramProfile?: string;
+  profileImage1?: string;
+  profileImage2?: string;
+  createdAt: string;
+}
+
 export interface GalleryType {
   id: string;
   title: string;

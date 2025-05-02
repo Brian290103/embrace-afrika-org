@@ -21,6 +21,7 @@ import EditorClient from "@/components/editor-client";
 import ClientGallerySection from "@/app/(landing)/components/client-gallery-section";
 import { getGalleryByRelation } from "@/actions/galleryAction";
 import { cn } from "@/lib/utils";
+import EventRegistrationForm from "@/app/(landing)/events/[slug]/form";
 
 const ClientEventDetails = async ({ event }: { event: EventsType }) => {
   const galleryList: GalleryType[] = await getGalleryByRelation(
@@ -75,12 +76,14 @@ const ClientEventDetails = async ({ event }: { event: EventsType }) => {
               </SheetTrigger>
               <SheetContent>
                 <SheetHeader>
-                  <SheetTitle>Are you absolutely sure?</SheetTitle>
+                  <SheetTitle>{event.title} Registration form</SheetTitle>
                   <SheetDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
+                    Fill in your correct details.
                   </SheetDescription>
                 </SheetHeader>
+                <div className="h-full max-h-[calc(100vh-100px)] overflow-y-auto">
+                  <EventRegistrationForm />
+                </div>
               </SheetContent>
             </Sheet>
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { SocialAccounts } from "@/data/social-accounts";
 import Link from "next/link";
+import TranslateComponent from "@/app/(landing)/components/translate-component";
 
 const TopNavbar = () => {
   return (
@@ -23,6 +24,9 @@ const TopNavbar = () => {
       </Link>
 
       <ul className="flex gap-2">
+        <li className="">
+          <TranslateComponent />
+        </li>
         {SocialAccounts.map((social) => (
           <li key={social.title}>
             <a href={social.url} target="_blank">
