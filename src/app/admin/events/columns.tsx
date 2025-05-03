@@ -70,10 +70,10 @@ export const eventColumns: ColumnDef<EventsType>[] = [
       </div>
     ),
   },
-  {
-    accessorKey: "caption",
-    header: "Caption",
-  },
+  // {
+  //   accessorKey: "caption",
+  //   header: "Caption",
+  // },
   {
     accessorKey: "slug",
     header: ({ column }) => (
