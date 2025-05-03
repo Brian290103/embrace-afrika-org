@@ -60,7 +60,10 @@ const ClientGallerySection = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {images.length > 0 ? (
               images.map((item) => (
-                <div key={item.id} className="aspect-w-1 aspect-h-1 relative">
+                <div
+                  key={item.id}
+                  className="aspect-w-1 group aspect-h-1 rounded-md overflow-hidden relative"
+                >
                   <Image
                     src={item.mediaUrl}
                     alt={item.title}
@@ -68,9 +71,11 @@ const ClientGallerySection = ({
                     height={500}
                     className="object-cover h-[350px] rounded-md"
                   />
-                  <p className="text-sm  mt-1">
-                    {item.title} - {item.caption}
-                  </p>
+                  <div className="absolute bottom-0 opacity-0 group-hover:opacity-100 duration-300 bg-black/80 h-full  text-white w-full flex  items-center p-3">
+                    <p className="tracking-wider font-heading2 text-center  w-full mt-1">
+                      {item.title}
+                    </p>
+                  </div>
                 </div>
               ))
             ) : (
@@ -91,9 +96,11 @@ const ClientGallerySection = ({
                     Your browser does not support the video tag.
                   </video>
 
-                  <p className="text-sm  mt-1">
-                    {item.title} - {item.caption}
-                  </p>
+                  <div className="p-2">
+                    <p className="text-sm  py-1 text-center font-semibold tracking-wider font-heading2">
+                      {item.title}
+                    </p>
+                  </div>
                 </div>
               ))
             ) : (

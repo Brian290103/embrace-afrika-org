@@ -68,10 +68,10 @@ export const visitColumns: ColumnDef<VisitsType>[] = [
       </div>
     ),
   },
-  {
-    accessorKey: "caption",
-    header: "Caption",
-  },
+  // {
+  //   accessorKey: "caption",
+  //   header: "Caption",
+  // },
   {
     accessorKey: "slug",
     header: ({ column }) => (
