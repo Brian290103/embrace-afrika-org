@@ -198,10 +198,10 @@ const EventsFlyOut = ({
                             }
                           />
                           <div className="flex flex-col gap-1">
-                            <h1 className="font-semibold font-heading1 tracking-wider group:hover:tracking-widest">
+                            <h1 className="font-semibold font-heading1 tracking-wider group-hover:tracking-widest">
                               {event.title}
                             </h1>
-                            <p className="text-sm text-muted-foreground group:hover:text-white">
+                            <p className="text-sm duration-300 group-hover:text-white">
                               {event.caption}
                             </p>
                             <span className="text-sm">

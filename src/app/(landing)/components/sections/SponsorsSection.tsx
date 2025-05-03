@@ -24,7 +24,7 @@ const SponsorsSection = async ({ direction }) => {
               key={index}
               src={sponsor.logoUrl}
               alt={sponsor.name}
-              className="mx-2 h-14 object-cover md:h-20"
+              className="px-2 w-full h-14 object-cover md:h-20"
               width={100}
               height={80}
             />

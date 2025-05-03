@@ -49,7 +49,15 @@ const ModelsCard = ({ model }: { model: ClientModel }) => {
           <CarouselContent>
             {imageUrls.map((item, index) => (
               <CarouselItem key={index} className="">
-                <div className="">
+                <div className="relative">
+                  <div className="absolute top-2 right-2 overflow-hidden rounded-xs">
+                    <Image
+                      src={model.country.flagUrl}
+                      alt={`a flag of ${model.country.name}`}
+                      width={30}
+                      height={24}
+                    />{" "}
+                  </div>
                   <Image
                     src={item}
                     alt={`an image of ${model.name}`}
