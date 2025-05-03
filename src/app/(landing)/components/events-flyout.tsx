@@ -148,7 +148,7 @@ const EventsFlyOut = ({
                           <h1 className="font-semibold font-heading1 tracking-wider group:hover:tracking-widest">
                             {event.title}
                           </h1>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-muted-foreground group:hover:text-white">
                             {event.caption}
                           </p>
                           <span className="text-sm">
@@ -201,7 +201,7 @@ const EventsFlyOut = ({
                             <h1 className="font-semibold font-heading1 tracking-wider group:hover:tracking-widest">
                               {event.title}
                             </h1>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-sm text-muted-foreground group:hover:text-white">
                               {event.caption}
                             </p>
                             <span className="text-sm">

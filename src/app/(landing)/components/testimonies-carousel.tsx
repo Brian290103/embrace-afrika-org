@@ -35,7 +35,7 @@ const TestimoniesCarousel = ({
                   <div className="grid grid-cols-1 flex-col items-center justify-center gap-3 text-center md:grid-cols-6 md:p-6">
                     {/* PREV IMAGE */}
                     <div className="relative hidden h-full border md:block">
-                      <div className="absolute left-0 right-0 h-full w-full bg-gold/50"></div>
+                      <div className="absolute left-0 right-0 h-full w-full bg-brand-primary/50"></div>
                       <img
                         src={
                           testimonies[
@@ -49,7 +49,7 @@ const TestimoniesCarousel = ({
                     </div>
 
                     {/* MAIN SECTION */}
-                    <div className="grid grid-cols-3 border border-s-8 border-s-gold md:col-span-4">
+                    <div className="grid grid-cols-3 border border-s-8 border-s-brand-primary md:col-span-4">
                       <div className="border">
                         <img
                           src={testimony.profileImageUrl}
@@ -58,7 +58,7 @@ const TestimoniesCarousel = ({
                         />
                       </div>
                       <div className="col-span-2 flex flex-col items-start gap-3 px-2 py-10 sm:px-5">
-                        <Quote className="h-12 w-12 text-gold sm:h-16 sm:w-16" />
+                        <Quote className="h-12 w-12 text-brand-primary sm:h-16 sm:w-16" />
                         <p className="text-start font-heading text-base sm:text-lg">
                           {testimony.message}
                         </p>
@@ -73,7 +73,7 @@ const TestimoniesCarousel = ({
 
                     {/* NEXT IMAGE */}
                     <div className="relative hidden h-full border md:block">
-                      <div className="absolute left-0 right-0 h-full w-full bg-gold/50"></div>
+                      <div className="absolute left-0 right-0 h-full w-full bg-brand-primary/50"></div>
                       <img
                         src={
                           testimonies[(index + 1) % testimonies.length]

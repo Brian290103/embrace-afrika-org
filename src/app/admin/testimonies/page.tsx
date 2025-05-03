@@ -49,7 +49,7 @@ const TestimoniesPage = async () => {
                 <TableHead>Profile Image</TableHead>
                 <TableHead>Username</TableHead>
                 <TableHead>Occupation</TableHead>
-                <TableHead>Message</TableHead>
+                {/*<TableHead>Message</TableHead>*/}
                 <TableHead>Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -69,7 +69,7 @@ const TestimoniesPage = async () => {
                   </TableCell>
                   <TableCell>{testimony.username}</TableCell>
                   <TableCell>{testimony.occupation}</TableCell>
-                  <TableCell>{testimony.message}</TableCell>
+                  {/*<TableCell>{testimony.message}</TableCell>*/}
                   <TableCell>
                     <div className={"flex items-center gap-2"}>
                       <EditDialog

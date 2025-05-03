@@ -6,8 +6,6 @@ import EventsCarousel from "@/app/(landing)/components/events-carousel";
 
 const EventsSection = async () => {
   const events: EventsType[] = await getEvents();
-
-  console.log(events);
   return (
     <div>
       <HeaderTitle

@@ -68,10 +68,10 @@ export const newsColumns: ColumnDef<NewsType>[] = [
     ),
   },
 
-  {
-    accessorKey: "caption",
-    header: "Caption",
-  },
+  // {
+  //   accessorKey: "caption",
+  //   header: "Caption",
+  // },
   {
     accessorKey: "slug",
     header: ({ column }) => (
