@@ -61,33 +61,35 @@ const ClientEventDetails = async ({ event }: { event: EventsType }) => {
                 </TableRow>
               </TableBody>
             </Table>
-            {isUpcoming && (
-              <Sheet>
-                <SheetTrigger
-                  className={cn(
-                    "rounded-xl flex items-center justify-center p-5 font-heading1 uppercase font-semibold tracking-wider",
-                    isUpcoming
-                      ? "bg-brand-primary text-black hover:bg-black hover:text-brand-primary"
-                      : "bg-gray-500 text-white cursor-not-allowed",
-                    "duration-300",
-                  )}
-                  disabled={!isUpcoming} // Disable if the event is in the past
-                >
-                  {isUpcoming ? "Click to Register" : "Event Ended"}
-                </SheetTrigger>
-                <SheetContent className={"w-11/12 max-w-sm"}>
-                  <SheetHeader>
-                    <SheetTitle>{event.title} Registration form</SheetTitle>
-                    <SheetDescription>
-                      Fill in your correct details.
-                    </SheetDescription>
-                  </SheetHeader>
-                  <div className="h-full max-h-[calc(100vh-100px)] overflow-y-auto">
-                    <EventRegistrationForm />
-                  </div>
-                </SheetContent>
-              </Sheet>
-            )}
+            <div className={"hidden"}>
+              {isUpcoming && (
+                <Sheet>
+                  <SheetTrigger
+                    className={cn(
+                      "rounded-xl flex items-center justify-center p-5 font-heading1 uppercase font-semibold tracking-wider",
+                      isUpcoming
+                        ? "bg-brand-primary text-black hover:bg-black hover:text-brand-primary"
+                        : "bg-gray-500 text-white cursor-not-allowed",
+                      "duration-300",
+                    )}
+                    disabled={!isUpcoming} // Disable if the event is in the past
+                  >
+                    {isUpcoming ? "Click to Register" : "Event Ended"}
+                  </SheetTrigger>
+                  <SheetContent className={"w-11/12 max-w-sm"}>
+                    <SheetHeader>
+                      <SheetTitle>{event.title} Registration form</SheetTitle>
+                      <SheetDescription>
+                        Fill in your correct details.
+                      </SheetDescription>
+                    </SheetHeader>
+                    <div className="h-full max-h-[calc(100vh-100px)] overflow-y-auto">
+                      <EventRegistrationForm />
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              )}
+            </div>
           </div>
 
           <div className="w-full rounded-xl overflow-hidden">
