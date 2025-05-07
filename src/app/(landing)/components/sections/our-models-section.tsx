@@ -3,15 +3,7 @@ import HeaderTitle from "@/app/(landing)/components/header-title";
 import ModelsCard from "@/app/(landing)/components/cards/models-cards";
 import { getClientModels } from "@/actions/client/clientModelsAction";
 import { ClientModel } from "@/typings-client";
-
-function shuffleArray<T>(array: T[]): T[] {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
+import { shuffleArray } from "@/lib/utils";
 
 const OurModelsSection = async () => {
   const models: ClientModel[] = await getClientModels();
