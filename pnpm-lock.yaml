@@ -182,6 +182,9 @@ importers:
       react-fast-marquee:
         specifier: ^1.6.5
         version: 1.6.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-ga:
+        specifier: ^3.3.1
+        version: 3.3.1(prop-types@15.8.1)(react@19.1.0)
       react-hook-form:
         specifier: ^7.56.1
         version: 7.56.1(react@19.1.0)
@@ -3634,6 +3637,12 @@ packages:
     peerDependencies:
       react: '>= 16.8.0 || ^18.0.0'
       react-dom: '>= 16.8.0 || ^18.0.0'
+
+  react-ga@3.3.1:
+    resolution: {integrity: sha512-4Vc0W5EvXAXUN/wWyxvsAKDLLgtJ3oLmhYYssx+YzphJpejtOst6cbIHCIyF50Fdxuf5DDKqRYny24yJ2y7GFQ==}
+    peerDependencies:
+      prop-types: ^15.6.0
+      react: ^15.6.2 || ^16.0 || ^17 || ^18
 
   react-hook-form@7.56.1:
     resolution: {integrity: sha512-qWAVokhSpshhcEuQDSANHx3jiAEFzu2HAaaQIzi/r9FNPm1ioAvuJSD4EuZzWd7Al7nTRKcKPnBKO7sRn+zavQ==}
@@ -7923,6 +7932,11 @@ snapshots:
     dependencies:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
+
+  react-ga@3.3.1(prop-types@15.8.1)(react@19.1.0):
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.1.0
 
   react-hook-form@7.56.1(react@19.1.0):
     dependencies:
