@@ -16,7 +16,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import EditorClient from "@/components/editor-client";
 import Image from "next/image";
 import ModelsMoreDetails from "@/app/admin/models/[id]/models-more-details";
 
@@ -91,11 +90,6 @@ export default async function ModelDetailsPage({
                   </TableRow>
                 </TableBody>
               </Table>
-              {bio ? (
-                <EditorClient editable={false} value={JSON.parse(bio)} />
-              ) : (
-                <p>No bio available.</p>
-              )}
             </div>
           </div>
         </CardContent>
