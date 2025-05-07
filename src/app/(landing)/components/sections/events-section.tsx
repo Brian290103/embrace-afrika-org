@@ -1,11 +1,11 @@
 import React from "react";
 import { getEvents } from "@/actions/eventAction";
-import { EventsType } from "@/typings";
+import { EventType } from "@/typings";
 import HeaderTitle from "@/app/(landing)/components/header-title";
 import EventsCarousel from "@/app/(landing)/components/events-carousel";
 
 const EventsSection = async () => {
-  const events: EventsType[] = await getEvents();
+  const events: EventType[] = await getEvents();
   return (
     <div>
       <HeaderTitle

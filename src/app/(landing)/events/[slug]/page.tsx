@@ -1,7 +1,7 @@
 import React from "react";
 import ClientEventDetails from "@/app/(landing)/events/[slug]/details";
 import HeaderTitle from "@/app/(landing)/components/header-title";
-import { EventsType } from "@/typings";
+import { EventType } from "@/typings";
 import { getEventBySlug } from "@/actions/client/clientEventAction";
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -12,7 +12,7 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const slug = params.slug;
-  const event: EventsType = await getEventBySlug(slug);
+  const event: EventType = await getEventBySlug(slug);
 
   if (!event) {
     return {
@@ -34,7 +34,7 @@ export async function generateMetadata(
 }
 
 const EventDetailsPage = async ({ params }: Props) => {
-  const event: EventsType = await getEventBySlug(params.slug);
+  const event: EventType = await getEventBySlug(params.slug);
 
   if (!event) {
     return <div>Event not found</div>;

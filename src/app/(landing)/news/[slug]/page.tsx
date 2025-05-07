@@ -64,7 +64,7 @@ export default async function Page({ params }: Props) {
       <Image
         width={1000}
         height={1000}
-        className={"object-cover w-full h-[400px] rounded-xl"}
+        className={"object-cover w-full h-fit rounded-xl"}
         src={article.featuredImageUrl}
         alt={`featured image for the blog by the title ${article.title}`}
       />

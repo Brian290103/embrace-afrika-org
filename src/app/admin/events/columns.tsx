@@ -23,9 +23,9 @@ import {
 } from "@/components/ui/alert-dialog";
 import { deleteEvent } from "@/actions/eventAction"; // Corrected import path
 import Link from "next/link";
-import { EventsType } from "@/typings";
+import { EventType } from "@/typings";
 
-export const eventColumns: ColumnDef<EventsType>[] = [
+export const eventColumns: ColumnDef<EventType>[] = [
   {
     id: "sno",
     header: "SNo",
@@ -159,7 +159,10 @@ export const eventColumns: ColumnDef<EventsType>[] = [
                 View Details
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>
+              {" "}
+              <Link href={`/admin/events/${row.original.id}/edit`}>Edit</Link>
+            </DropdownMenuItem>
             <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
               <AlertDialog>
                 <AlertDialogTrigger className={"w-full text-start"}>

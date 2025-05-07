@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -19,7 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
 import { ImageDialog } from "@/components/image-dialog";
-import { addEvent } from "@/actions/eventAction"; // Import the addEvent action
+import { addEvent, updateEvent } from "@/actions/eventAction"; // Import both addEvent and updateEvent actions
 import { Loader2 } from "lucide-react";
 import { cn, slugify } from "@/lib/utils";
 import dynamic from "next/dynamic";
@@ -47,7 +47,11 @@ const EventFormSchema = z.object({
   eventLocation: z
     .string()
     .min(2, { message: "Event Location must be at least 2 characters" }),
-  featuredImageUrl: z.string().url({ message: "Please enter a valid URL" }),
+  featuredImageUrl: z
+    .string()
+    .url({ message: "Please enter a valid URL" })
+    .optional()
+    .or(z.literal("")), // Make it optional
 });
 
 type EventFormValues = z.infer<typeof EventFormSchema>;
@@ -91,7 +95,24 @@ const formFields = [
   },
 ] as const;
 
-const EventForm = () => {
+interface EventFormProps {
+  event?: {
+    id: string;
+    title: string;
+    caption: string;
+    content: string;
+    eventDate: Date;
+    eventLocation: string;
+    featuredImageUrl: string | null;
+  };
+}
+
+const EventForm: React.FC<EventFormProps> = ({ event }) => {
+  const [isUpdateMode, setIsUpdateMode] = useState(false);
+  const [selectedImageUrl, setSelectedImageUrl] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [date, setDate] = useState<Date>();
+
   const form = useForm<EventFormValues>({
     resolver: zodResolver(EventFormSchema),
     defaultValues: {
@@ -104,29 +125,61 @@ const EventForm = () => {
     },
   });
 
-  const [selectedImageUrl, setSelectedImageUrl] = useState<string>("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [date, setDate] = useState<Date>();
+  useEffect(() => {
+    if (event) {
+      setIsUpdateMode(true);
+      setSelectedImageUrl(event.featuredImageUrl || ""); // set default image
+      setDate(event.eventDate);
+
+      form.setValue("title", event.title);
+      form.setValue("caption", event.caption);
+      form.setValue("content", event.content);
+      form.setValue("eventDate", event.eventDate);
+      form.setValue("eventLocation", event.eventLocation);
+      form.setValue("featuredImageUrl", event.featuredImageUrl || "");
+    } else {
+      setDate(new Date());
+    }
+  }, [event, form]);
 
   const onSubmit = async (values: EventFormValues) => {
     setIsLoading(true);
     try {
-      await addEvent(
-        values.title,
-        values.caption,
-        values.content,
-        slugify(values.title), // Generate slug from title
-        values.eventDate,
-        values.eventLocation,
-        values.featuredImageUrl,
-      );
-      toast.success("Event data submitted successfully!");
-      form.reset();
-      setSelectedImageUrl("");
-      setDate(new Date());
+      if (isUpdateMode && event?.id) {
+        // Handle Update
+        await updateEvent(event.id, {
+          title: values.title,
+          caption: values.caption,
+          content: values.content,
+          eventDate: values.eventDate,
+          eventLocation: values.eventLocation,
+          featuredImageUrl: values.featuredImageUrl,
+        });
+        toast.success("Event updated successfully!");
+      } else {
+        // Handle Add
+        await addEvent(
+          values.title,
+          values.caption,
+          values.content,
+          slugify(values.title), // Generate slug from title
+          values.eventDate,
+          values.eventLocation,
+          values.featuredImageUrl,
+        );
+        toast.success("Event data submitted successfully!");
+        form.reset();
+        setSelectedImageUrl("");
+        setDate(new Date());
+      }
     } catch (error: any) {
-      toast.error(`Failed to submit event: ${error.message}`);
-      console.error("Error submitting form:", error);
+      toast.error(
+        `Failed to ${isUpdateMode ? "update" : "submit"} event: ${error.message}`,
+      );
+      console.error(
+        `Error ${isUpdateMode ? "updating" : "submitting"} form:`,
+        error,
+      );
     } finally {
       setIsLoading(false);
     }
@@ -156,7 +209,7 @@ const EventForm = () => {
         <div className="w-full flex sticky top-14 relative z-20 left-0 right-0 items-center justify-end pb-4 md:pb-6">
           <Button type="submit" disabled={isLoading}>
             {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Submit Event
+            {isUpdateMode ? "Update Event" : "Submit Event"}
           </Button>
         </div>
 
@@ -243,11 +296,22 @@ const EventForm = () => {
                         {...formFieldProps}
                       />
                     ) : field.name === "content" ? (
-                      <Editor
-                        onChange={(blocks: Block[]) => {
-                          form.setValue("content", JSON.stringify(blocks));
-                        }}
-                      />
+                      <>
+                        {event ? (
+                          <Editor
+                            value={JSON.parse(event?.content as string)}
+                            onChange={(blocks: Block[]) => {
+                              form.setValue("content", JSON.stringify(blocks));
+                            }}
+                          />
+                        ) : (
+                          <Editor
+                            onChange={(blocks: Block[]) => {
+                              form.setValue("content", JSON.stringify(blocks));
+                            }}
+                          />
+                        )}
+                      </>
                     ) : (
                       <Textarea
                         placeholder={field.placeholder}

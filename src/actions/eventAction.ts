@@ -1,5 +1,5 @@
 "use server";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db/drizzle";
 import { events } from "@/db/schema"; // Import the events schema
@@ -8,11 +8,14 @@ import { slugify } from "@/lib/utils"; // Import the slugify function
 // Get all events
 export const getEvents = async () => {
   try {
-    const eventsData = await db.select().from(events);
+    const eventsData = await db
+      .select()
+      .from(events)
+      .orderBy(sql`event_date ASC`); // Order by event_date ascending
     return eventsData;
   } catch (error: any) {
     console.error("Error fetching events:", error);
-    throw new Error(`Failed to fetch events: ${error.message}`); // Improved error handling
+    throw new Error(`Failed to fetch events: ${error.message}`);
   }
 };
 

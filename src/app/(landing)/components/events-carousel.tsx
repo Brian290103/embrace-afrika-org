@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { EventsType } from "@/typings";
+import { EventType } from "@/typings";
 import {
   Carousel,
   CarouselContent,
@@ -17,7 +17,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 interface EventsCarouselProps {
-  events: EventsType[];
+  events: EventType[];
   type: "upcoming" | "past";
 }
 

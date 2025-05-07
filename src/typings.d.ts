@@ -56,7 +56,7 @@ export interface PageantExperience {
   createdAt: string;
 }
 
-export interface EventsType {
+export interface EventType {
   id: string;
   slug: string;
   title: string;

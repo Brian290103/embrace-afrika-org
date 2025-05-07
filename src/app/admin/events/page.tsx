@@ -1,5 +1,5 @@
 import React from "react";
-import { EventsType } from "@/typings"; // Import the VisitsType
+import { EventType } from "@/typings"; // Import the VisitsType
 import {
   Card,
   CardContent,
@@ -14,7 +14,7 @@ import { getEvents } from "@/actions/eventAction";
 import { EventsDataTable } from "@/app/admin/events/data-table";
 
 const EventsPage = async () => {
-  const data: EventsType[] = await getEvents(); // Fetch visits data
+  const data: EventType[] = await getEvents(); // Fetch visits data
   console.log(data);
   return (
     <section className={"flex flex-col gap-4"}>

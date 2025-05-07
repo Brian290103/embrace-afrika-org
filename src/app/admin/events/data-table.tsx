@@ -30,10 +30,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { EventsType } from "@/typings";
+import { EventType } from "@/typings";
 import { eventColumns } from "@/app/admin/events/columns";
 
-export function EventsDataTable({ data }: { data: EventsType }) {
+export function EventsDataTable({ data }: { data: EventType }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     [],

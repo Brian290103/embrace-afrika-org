@@ -1,5 +1,5 @@
 import React from "react";
-import { EventsType, GalleryType } from "@/typings";
+import { EventType, GalleryType } from "@/typings";
 import Image from "next/image";
 import {
   Sheet,
@@ -23,7 +23,7 @@ import { getGalleryByRelation } from "@/actions/galleryAction";
 import { cn } from "@/lib/utils";
 import EventRegistrationForm from "@/app/(landing)/events/[slug]/form";
 
-const ClientEventDetails = async ({ event }: { event: EventsType }) => {
+const ClientEventDetails = async ({ event }: { event: EventType }) => {
   const galleryList: GalleryType[] = await getGalleryByRelation(
     "event",
     event.id,
