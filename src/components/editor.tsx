@@ -45,7 +45,7 @@ export const Editor = ({ value, onChange, editable = true }: EditorProps) => {
         editable={editable}
         editor={editor}
         theme={"light"}
-        className={"font-black"}
+        className={`font-black ${!editable && "not-editable"}`}
       />
     </div>
   );

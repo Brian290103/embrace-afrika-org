@@ -24,7 +24,7 @@ const HeaderTitle: React.FC<HeaderTitleProps> = ({
         >
           <Link
             href={url}
-            className="font-heading1 font-semibod text-center text-4xl uppercase tracking-widest hover:italic sm:text-7xl"
+            className="font-numeric font-semibod text-center text-4xl uppercase tracking-widest hover:italic sm:text-7xl"
           >
             {title}
           </Link>

@@ -125,7 +125,7 @@ const MobileNav = () => {
             <Menu />
           </Button>
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className={"w-10/12"}>
           <SheetHeader>
             <SheetTitle>EmbraceAfrika</SheetTitle>
             <SheetDescription>
