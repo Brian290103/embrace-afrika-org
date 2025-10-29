@@ -79,7 +79,7 @@ const GalleryForm = ({
         visitsId,
       );
       toast.success("Gallery item submitted successfully!");
-      form.reset();
+      // form.reset();
       setSelectedMediaUrl("");
     } catch (error: any) {
       toast.error(`Failed to submit gallery item: ${error.message}`);

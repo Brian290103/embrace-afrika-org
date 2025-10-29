@@ -69,7 +69,7 @@ const PageantForm: React.FC<PageantFormProps> = ({
       );
       toast.success("Pageant experience added successfully!");
       dismissDialog(true);
-      form.reset(); // Clear the form
+      // form.reset(); // Clear the form
     } catch (error: any) {
       toast.error(error.message || "Failed to add pageant experience.");
     } finally {
