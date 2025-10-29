@@ -57,6 +57,12 @@ const reels: ReelItem[] = [
     description: "Mitchelle Otieno",
   },
 ];
+
+const mainVideos = [
+  "https://res.cloudinary.com/doouqrlsg/video/upload/v1761717585/WhatsApp_Video_2025-10-29_at_08.49.12_sgbmdg.mp4",
+  "https://res.cloudinary.com/doouqrlsg/video/upload/v1761718725/WhatsApp_Video_2025-10-29_at_09.15.44_mxkeco.mp4",
+];
+
 const MissTourismGlobal2025 = () => {
   return (
     <div className="mx-auto w-full flex flex-col gap-5">
@@ -66,7 +72,7 @@ const MissTourismGlobal2025 = () => {
         subtitle="Queen Michelle Otieno, a beacon of beauty and grace "
       />
       <M_T_G_2025_Stories />
-      <section className="mx-auto grid w-full max-w-5xl pb-10 grid-cols-1 gap-10 p-2 md:grid-cols-2 lg:grid-cols-3">
+      <section className="mx-auto px-2 grid w-full max-w-5xl pb-10 grid-cols-1 gap-10 p-2 md:grid-cols-2 lg:grid-cols-3">
         <article className="flex flex-col gap-3 lg:col-span-2">
           <p className="text-sm md:text-base">
             Mitchelle Otieno, representing Kenya 🇰🇪, achieved a historic victory
@@ -136,27 +142,33 @@ const MissTourismGlobal2025 = () => {
         </article>
       </section>
 
-      <div className="w-full max-w-7xl pb-10 mx-auto flex   items-center justify-center">
-        <VideoPlayer className="overflow-hidden rounded-lg border">
-          <VideoPlayerContent
-            className="w-full min-h-[500px]"
-            crossOrigin=""
-            muted
-            preload="auto"
-            slot="media"
-            autoPlay
-            src="https://res.cloudinary.com/doouqrlsg/video/upload/v1761717585/WhatsApp_Video_2025-10-29_at_08.49.12_sgbmdg.mp4"
-          />
-          <VideoPlayerControlBar>
-            <VideoPlayerPlayButton />
-            <VideoPlayerSeekBackwardButton />
-            <VideoPlayerSeekForwardButton />
-            <VideoPlayerTimeRange />
-            <VideoPlayerTimeDisplay showDuration />
-            <VideoPlayerMuteButton />
-            <VideoPlayerVolumeRange />
-          </VideoPlayerControlBar>
-        </VideoPlayer>
+      <div className="w-full px-2 max-w-7xl pb-10 mx-auto   gap-5 items-center grid grid-cols-1 md:grid-cols-2 justify-center">
+        {mainVideos.map((videoSrc) => (
+          <VideoPlayer
+            key={Math.random().toString()}
+            className="overflow-hidden rounded-lg border w-full"
+          >
+            <VideoPlayerContent
+              className="w-full h-full"
+              crossOrigin=""
+              muted
+              loop
+              preload="auto"
+              slot="media"
+              autoPlay
+              src={videoSrc}
+            />
+            <VideoPlayerControlBar>
+              <VideoPlayerPlayButton />
+              <VideoPlayerSeekBackwardButton />
+              <VideoPlayerSeekForwardButton />
+              <VideoPlayerTimeRange />
+              <VideoPlayerTimeDisplay showDuration />
+              <VideoPlayerMuteButton />
+              <VideoPlayerVolumeRange />
+            </VideoPlayerControlBar>
+          </VideoPlayer>
+        ))}
       </div>
     </div>
   );
