@@ -1,5 +1,5 @@
 "use server";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db/drizzle";
 import { gallery } from "@/db/schema";
@@ -188,7 +188,11 @@ export const getGalleryByRelation = async (
 
 export const getAllGalleryItems = async () => {
   try {
-    const galleryItems = await db.select().from(gallery);
+    const galleryItems = await db
+      .select()
+      .from(gallery)
+      .orderBy(desc(gallery.createdAt));
+    console.log({ galleryItems });
     return galleryItems;
   } catch (error: any) {
     console.error("Error fetching all gallery items:", error);

@@ -28,19 +28,16 @@ const ClientGallerySection = ({
 }) => {
   const [images, setImages] = useState<GalleryItem[]>([]);
   const [videos, setVideos] = useState<GalleryItem[]>([]);
-
   useEffect(() => {
     let filteredImages = galleryList.filter((item) => item.type === "image");
     let filteredVideos = galleryList.filter((item) => item.type === "video");
-
     if (limit) {
-      // Shuffle the arrays to get random items
-      filteredImages = [...filteredImages]
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 10); // Get 10 random
-      filteredVideos = [...filteredVideos]
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 8); // Get 8 random
+      filteredImages = filteredImages
+        .slice(0, 30)
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 10);
+      // "videos is just okay" implies keeping the existing simple limit for videos.
+      filteredVideos = filteredVideos.slice(0, 8); // Get up to 8 videos
     }
     setImages(filteredImages);
     setVideos(filteredVideos);

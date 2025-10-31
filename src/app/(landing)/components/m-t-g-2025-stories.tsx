@@ -23,10 +23,10 @@ const stories = [
   },
   {
     id: 2,
-    author: "City Cast TV",
+    author: "Miss Tourism International",
     avatar:
-      "https://res.cloudinary.com/doouqrlsg/image/upload/v1761710632/452314960_1007160877715150_4047329761750471245_n._fwrawu.jpg",
-    fallback: "CCTV",
+      "https://res.cloudinary.com/doouqrlsg/image/upload/v1761930039/opengraph-image.0d35677e_ndctco.png",
+    fallback: "MTI",
     video:
       "https://res.cloudinary.com/doouqrlsg/video/upload/v1761711330/AQOcqzBVcRrp2wo-ren1OGLiVj4NbRux1TEC2PpR-hqkgy1pndIgIf-Tl1D2Lxe3eHcXRKWkWNmbTxJ9x8PvwDx5eEIcwoUP_mplzxy.mp4",
   },

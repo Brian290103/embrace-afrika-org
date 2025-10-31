@@ -82,7 +82,7 @@ const MissTourismGlobal2025 = () => {
             the nation&apos;s vibrant spirit and potential.
           </p>
 
-          <SmallTitle title="A Queen's Journey 🏆" />
+          <SmallTitle title="A Queen's Journey" />
           <p className="text-sm md:text-base">
             Mitchelle&apos;s performance was lauded for her confidence,
             elegance, and profound cultural pride, highlighted by her stunning
@@ -90,7 +90,7 @@ const MissTourismGlobal2025 = () => {
             wildlife motifs.
           </p>
 
-          <SmallTitle title="Tourism Ambassadorship ✈️" />
+          <SmallTitle title="Tourism Ambassadorship" />
           <p className="text-sm md:text-base">
             As Miss Tourism Global 2025/2026 and Miss Tourism International
             Kenya 2025, Mitchelle is dedicated to promoting Kenya&apos;s tourism
@@ -102,7 +102,7 @@ const MissTourismGlobal2025 = () => {
             country.
           </p>
 
-          <SmallTitle title="Professional & Inspirational Profile 🌟" />
+          <SmallTitle title="Professional & Inspirational Profile" />
           <p className="text-sm md:text-base">
             Beyond her title, Mitchelle is a successful commercial model,
             catwalk coach, and trainer, known for her grace and vibrant stage
