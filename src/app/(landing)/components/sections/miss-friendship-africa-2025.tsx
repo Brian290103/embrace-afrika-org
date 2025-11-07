@@ -22,7 +22,7 @@ const reels: ReelItem[] = [
   {
     id: 3,
     type: "video",
-    src: "https://res.cloudinary.com/doouqrlsg/video/upload/v1762502137/Facebook_10_o8rrys.mp4",
+    src: "https://res.cloudinary.com/doouqrlsg/video/upload/v1762504914/WhatsApp_Video_2025-11-06_at_20.30.44_yyq2m8.mp4",
     duration: 12,
     title: "Kaddy Samateh",
     description: "Kaddy Samateh",
