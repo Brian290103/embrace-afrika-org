@@ -10,11 +10,13 @@ import LatestNewsSection from "@/app/(landing)/components/sections/latest-news-s
 import SponsorsSection from "@/app/(landing)/components/sections/SponsorsSection";
 import TestimoniesSection from "@/app/(landing)/components/sections/testimonies-section";
 import MissTourismGlobal2025 from "../components/sections/miss-tourism-global-2025";
+import MissFriendshipAfrica2025 from "../components/sections/miss-friendship-africa-2025";
 
 const HomePage = () => {
   return (
     <div>
       <HeroSection />
+      <MissFriendshipAfrica2025 />
       <MissTourismGlobal2025 />
       <OurModelsSection />
       <EventsSection />
